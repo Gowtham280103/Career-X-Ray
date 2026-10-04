@@ -36,7 +36,10 @@ jobs:
         working-directory: frontend
         run: npm run build
 
-      - name: Upload artifact
+      - name: Add .nojekyll (prevents GitHub from ignoring _files)
+        run: touch frontend/dist/.nojekyll
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/dist
